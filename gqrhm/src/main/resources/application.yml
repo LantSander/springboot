@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sang?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true
+    ##开启懒加载
+    open-in-view: true
+
+    hibernate:
+    ##create 启动时删数据库中的表，然后创建，退出时不删除数据表
+    ##create-drop 启动时删数据库中的表，然后创建，退出时删除数据表 如果表不存在报错
+    ##update 如果启动时表格式不一致则更新表，原有数据保留
+    ##validate 项目启动表结构进行校验 如果不一致则报错
+      ddl-auto: update
+
+
+  thymeleaf:
+  #  清除缓存，实现热部署。也就是修改了html后不用重启，刷新页面就能看到效果。不过这儿特别强调一下
+  # 修改完html后一定要ctrl+f9重新build一下。再回到浏览器刷新，就能看到效果了
+    cache: false
+    mode: LEGACYHTML5  #配置是回避HTML进行严格的检查的配置，当然你需要提前引入nekohtml依赖
+
